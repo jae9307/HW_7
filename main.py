@@ -6,11 +6,11 @@ def pca():
     data_frame = data_frame.drop('ID', axis=1)
 
     covariance = pd.DataFrame.cov(data_frame)
-    print(covariance.to_string())
 
     eigenvalues, eigenvectors = np.linalg.eig(covariance)
-    print("Eigenvectors ", np.matrix(eigenvectors))
-    print("Eigenvalues ", np.matrix(eigenvalues))
+    eigenvectors = np.round(eigenvectors, decimals=2)
+    eigenvalues = sorted(np.round(eigenvalues, decimals=3))
+    print("Eigenvalues after sort ", eigenvalues)
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
